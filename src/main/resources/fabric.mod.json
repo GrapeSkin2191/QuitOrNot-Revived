@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "id": "quitornot",
   "version": "${version}",
-  "name": "QuitOrNot",
+  "name": "QuitOrNot Revived",
   "description": "Add a quit confirm screen/toast to avoid mistakenly quitting the game.",
   "authors": [
     "CaaMoe",
@@ -10,7 +10,7 @@
     "Tapio",
     "Grapeskin2191"
   ],
-  "license": "Nova-Relay-License-1.0",
+  "license": "GNU Affero General Public License v3.0",
   "icon": "assets/quitornot/icon.png",
   "environment": "client",
   "entrypoints": {
