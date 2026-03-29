@@ -69,7 +69,7 @@ public final class BedrockStyle extends BaseStyle {
 //        ctx.setColor(1.0F, 1.0F, 1.0F, 1.0F);
 //        RenderSystem.enableBlend();
         ctx.blit(RenderPipelines.GUI_TEXTURED, WINDOW_TEXTURE, x, y, 0, 0, 252, 140, 256, 256);
-        ctx.drawString(textRenderer, title, x + 8, y + 6, ARGB.opaque(4210752), false); // TODO: Shadow false?
+        ctx.drawString(textRenderer, title, x + 8, y + 6, ARGB.opaque(4210752), false);
     }
 
 
