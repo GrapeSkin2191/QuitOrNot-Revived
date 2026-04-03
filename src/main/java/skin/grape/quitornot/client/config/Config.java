@@ -22,6 +22,7 @@ public class Config {
     public ConfirmType confirmTypeQuitSinglePlayer = ConfirmType.TOAST;
     public ConfirmType confirmTypeQuitMultiplayer = ConfirmType.TOAST;
     public boolean enableKey = true;
+    public boolean swapButtons = false;
     public long buttonWaitTime = 500L;
     public ScreenStyle confirmScreenStyle = ScreenStyle.BEDROCK;
     public long toastKeepTime = 5000L;
@@ -46,6 +47,9 @@ public class Config {
             }
             if (object.has("enableKey")) {
                 config.enableKey = object.getAsJsonPrimitive("enableKey").getAsBoolean();
+            }
+            if (object.has("swapButtons")) {
+                config.swapButtons = object.getAsJsonPrimitive("swapButtons").getAsBoolean();
             }
             if (object.has("buttonWaitTime")) {
                 config.buttonWaitTime = object.getAsJsonPrimitive("buttonWaitTime").getAsLong();

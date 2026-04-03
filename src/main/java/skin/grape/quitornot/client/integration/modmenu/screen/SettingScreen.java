@@ -73,6 +73,13 @@ public final class SettingScreen extends Screen {
                     })
                     .bounds(0, 0, 50, 20).build(), Component.translatable("config.quitornot.settings.screen.key")));
 
+            listWidget.addEntry(listWidget.new ButtonListEntry(Button
+                    .builder(Config.config.swapButtons ? CommonComponents.OPTION_ON : CommonComponents.OPTION_OFF, (button) -> {
+                        Config.config.swapButtons = !Config.config.swapButtons;
+                        button.setMessage(Config.config.swapButtons ? CommonComponents.OPTION_ON : CommonComponents.OPTION_OFF);
+                    })
+                    .bounds(0, 0, 50, 20).build(), Component.translatable("config.quitornot.settings.screen.swap")));
+
             EditBox keepDark = new EditBox(minecraft.font, 0, 0, 48, 20, Component.empty());
             keepDark.setValue(String.valueOf(Config.config.buttonWaitTime));
             keepDark.setResponder(new PositiveLongParser(keepDark, (it) -> Config.config.buttonWaitTime = it));

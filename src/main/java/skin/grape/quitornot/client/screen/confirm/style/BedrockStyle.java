@@ -11,6 +11,7 @@ import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 import net.minecraft.util.ARGB;
+import skin.grape.quitornot.client.config.Config;
 
 import java.awt.*;
 
@@ -36,7 +37,7 @@ public final class BedrockStyle extends BaseStyle {
     @Override
     public Button generateConfirmButtons(Screen screen, Button.OnPress onConfirm) {
         return Button.builder(CommonComponents.GUI_YES, onConfirm)
-                .bounds((screen.width - windowWidth) / 2 + windowWidth - buttonWidth - buttonLRMargin,
+                .bounds((screen.width - windowWidth) / 2 + (Config.config.swapButtons ? buttonLRMargin : (windowWidth - buttonWidth - buttonLRMargin)),
                         (screen.height - windowHeight) / 2 + windowHeight - buttonBMargin - buttonHeight,
                         buttonWidth, buttonHeight).build();
     }
@@ -44,7 +45,7 @@ public final class BedrockStyle extends BaseStyle {
     @Override
     public Button generateCancelButtons(Screen screen, Button.OnPress onCancel) {
         return Button.builder(CommonComponents.GUI_NO, onCancel)
-                .bounds((screen.width - windowWidth) / 2 + buttonLRMargin,
+                .bounds((screen.width - windowWidth) / 2 + (Config.config.swapButtons ? (windowWidth - buttonWidth - buttonLRMargin) : (buttonLRMargin)),
                         (screen.height - windowHeight) / 2 + windowHeight - buttonBMargin - buttonHeight,
                         buttonWidth, buttonHeight).build();
     }

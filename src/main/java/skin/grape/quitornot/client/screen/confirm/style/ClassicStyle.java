@@ -7,6 +7,7 @@ import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
+import skin.grape.quitornot.client.config.Config;
 
 public final class ClassicStyle extends BaseStyle {
     // 按钮宽度
@@ -23,7 +24,7 @@ public final class ClassicStyle extends BaseStyle {
     @Override
     public Button generateConfirmButtons(Screen screen, Button.OnPress onConfirm) {
         return Button.builder(CommonComponents.GUI_YES, onConfirm)
-                .bounds(screen.width / 2 + buttonFMargin,
+                .bounds(screen.width / 2 + (Config.config.swapButtons ? (- buttonWidth - buttonFMargin) : buttonFMargin),
                         screen.height / 2 + buttonBMargin,
                         buttonWidth, buttonHeight).build();
     }
@@ -31,7 +32,7 @@ public final class ClassicStyle extends BaseStyle {
     @Override
     public Button generateCancelButtons(Screen screen, Button.OnPress onCancel) {
         return Button.builder(CommonComponents.GUI_NO, onCancel)
-                .bounds(screen.width / 2 - buttonWidth - buttonFMargin,
+                .bounds(screen.width / 2 + (Config.config.swapButtons ? buttonFMargin : (- buttonWidth - buttonFMargin)),
                         screen.height / 2 + buttonBMargin,
                         buttonWidth, buttonHeight).build();
     }

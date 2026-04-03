@@ -12,6 +12,7 @@
   "config.quitornot.settings.screen.category": "Confirm Screen Settings",
   "config.quitornot.settings.screen.style": "Confirm Screen Style",
   "config.quitornot.settings.screen.key": "Allow Shortcut Keys",
+  "config.quitornot.settings.screen.swap": "Swap Button Positions",
   "config.quitornot.settings.screen.wait": "Button Wait Time (ms)",
   "config.quitornot.settings.toast.category": "Confirm Toast Settings",
   "config.quitornot.settings.toast.time": "Toast Keep Time (ms)",
