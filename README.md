@@ -1,20 +1,26 @@
-# QuitOrNot Revived
+# QuitOrNot Revived 退出前确认：复生
 
-## Introduction
+## Introduction 介绍
 
 `QuitOrNot Revived` is a fork of [`QuitOrNot`](https://github.com/VulpesStella/QuitOrNot) (which is a [`QuitConfirm`](https://github.com/CaaMoe/QuitConfirm) fork).
 
-As a client-side mod, it pops up a confirm screen / toast to avoid mistakenly quitting the game.
+As a client-side mod, it pops up a confirm screen / toast to avoid mistakenly quitting Minecraft.
 
-## Features
+退出前确认：复生 是 QuitOrNot 的非官方移植版。
 
-* Confirm by Screen | Toast
-* Multiple Optional Confirm Screen Styles
-* Highly Configurable
+本模组会弹出一个确认窗口或提示框，以防止玩家因误操作退出游戏。（启动了10分钟的整合包直接点到退出你就老实了）
 
-## Installation
+## Features 功能
+
+* Confirm by Screen or Toast 确认窗口或提示框
+* Multiple Optional Confirm Screen Styles 多种可选的确认窗口样式
+* Highly Configurable 高度可配置
+
+## Installation 安装
 
 Fabric: Install the mod, along with Fabric API
+
+Fabric：将模组文件放入 mods 文件夹，需要 Fabric API
 
 ## License
 
