@@ -24,7 +24,7 @@ public final class ClassicStyle extends BaseStyle {
     @Override
     public Button generateConfirmButtons(Screen screen, Button.OnPress onConfirm) {
         return Button.builder(CommonComponents.GUI_YES, onConfirm)
-                .bounds(screen.width / 2 + (Config.config.swapButtons ? (- buttonWidth - buttonFMargin) : buttonFMargin),
+                .bounds(screen.width / 2 + (Config.config.swapButtons ? buttonFMargin : (- buttonWidth - buttonFMargin)),
                         screen.height / 2 + buttonBMargin,
                         buttonWidth, buttonHeight).build();
     }
@@ -32,7 +32,7 @@ public final class ClassicStyle extends BaseStyle {
     @Override
     public Button generateCancelButtons(Screen screen, Button.OnPress onCancel) {
         return Button.builder(CommonComponents.GUI_NO, onCancel)
-                .bounds(screen.width / 2 + (Config.config.swapButtons ? buttonFMargin : (- buttonWidth - buttonFMargin)),
+                .bounds(screen.width / 2 + (Config.config.swapButtons ? (- buttonWidth - buttonFMargin) : buttonFMargin),
                         screen.height / 2 + buttonBMargin,
                         buttonWidth, buttonHeight).build();
     }

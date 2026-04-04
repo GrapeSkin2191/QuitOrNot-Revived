@@ -37,7 +37,7 @@ public final class BedrockStyle extends BaseStyle {
     @Override
     public Button generateConfirmButtons(Screen screen, Button.OnPress onConfirm) {
         return Button.builder(CommonComponents.GUI_YES, onConfirm)
-                .bounds((screen.width - windowWidth) / 2 + (Config.config.swapButtons ? buttonLRMargin : (windowWidth - buttonWidth - buttonLRMargin)),
+                .bounds((screen.width - windowWidth) / 2 + (Config.config.swapButtons ? (windowWidth - buttonWidth - buttonLRMargin) : buttonLRMargin),
                         (screen.height - windowHeight) / 2 + windowHeight - buttonBMargin - buttonHeight,
                         buttonWidth, buttonHeight).build();
     }
@@ -45,7 +45,7 @@ public final class BedrockStyle extends BaseStyle {
     @Override
     public Button generateCancelButtons(Screen screen, Button.OnPress onCancel) {
         return Button.builder(CommonComponents.GUI_NO, onCancel)
-                .bounds((screen.width - windowWidth) / 2 + (Config.config.swapButtons ? (windowWidth - buttonWidth - buttonLRMargin) : buttonLRMargin),
+                .bounds((screen.width - windowWidth) / 2 + (Config.config.swapButtons ? buttonLRMargin : (windowWidth - buttonWidth - buttonLRMargin)),
                         (screen.height - windowHeight) / 2 + windowHeight - buttonBMargin - buttonHeight,
                         buttonWidth, buttonHeight).build();
     }
