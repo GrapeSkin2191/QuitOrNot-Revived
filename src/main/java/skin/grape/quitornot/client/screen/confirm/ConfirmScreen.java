@@ -4,7 +4,7 @@ import net.minecraft.client.input.KeyEvent;
 import skin.grape.quitornot.client.config.Config;
 import skin.grape.quitornot.client.mixin.AccessorScreen;
 import skin.grape.quitornot.client.screen.confirm.style.BaseStyle;
-import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.Renderable;
 import net.minecraft.client.gui.screens.Screen;
@@ -65,10 +65,10 @@ public final class ConfirmScreen extends Screen {
     }
 
     @Override
-    public void render(GuiGraphics context, int mouseX, int mouseY, float delta) {
-        style.render(this.minecraft, this.font, this, title, message, context, mouseX, mouseY, delta);
+    public void extractRenderState(GuiGraphicsExtractor context, int mouseX, int mouseY, float delta) {
+        style.extractRenderState(this.minecraft, this.font, this, title, message, context, mouseX, mouseY, delta);
         for (final Renderable r : ((AccessorScreen) (Object) this).getRenderables()) {
-            r.render(context, mouseX, mouseY, delta);
+            r.extractRenderState(context, mouseX, mouseY, delta);
         }
     }
 

@@ -1,46 +1,17 @@
 package skin.grape.quitornot.client.screen.confirm.style;
 
-//import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.blaze3d.vertex.*;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
-import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.screens.Screen;
-//import net.minecraft.client.renderer.GameRenderer;
-import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.Identifier;
-import net.minecraft.util.ARGB;
 
 public abstract class BaseStyle {
     public abstract Button generateConfirmButtons(Screen screen, Button.OnPress onConfirm);
 
     public abstract Button generateCancelButtons(Screen screen, Button.OnPress onCancel);
 
-    public abstract void render(Minecraft client, Font textRenderer, Screen screen, Component title, Component message,
-                                GuiGraphics ctx, int mouseX, int mouseY, float delta);
-
-    protected void renderBackground(GuiGraphics ctx, int startX, int startY, int endX, int endY, Identifier identifier) {
-//        int width = endX - startX;
-//        int height = endY - startY;
-//        BufferBuilder bufferBuilder = Tesselator.getInstance().begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX_COLOR);
-//        RenderSystem.setShader(GameRenderer::getPositionTexColorShader);
-//        RenderSystem.setShaderTexture(0, identifier);
-//        RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
-//        bufferBuilder.addVertex(startX, endY, 0.0F).setUv(0.0F, height / 32.0F).setColor(64, 64, 64, 255);
-//        bufferBuilder.addVertex(endX, endY, 0.0F).setUv(width / 32.0F, height / 32.0F).setColor(64, 64, 64, 255);
-//        bufferBuilder.addVertex(endX, startY, 0.0F).setUv(width / 32.0F, 0).setColor(64, 64, 64, 255);
-//        bufferBuilder.addVertex(startX, startY, 0.0F).setUv(0.0F, 0).setColor(64, 64, 64, 255);
-//        BufferUploader.drawWithShader(bufferBuilder.buildOrThrow());
-
-        // 等价于上面注释掉的旧版本代码
-        for (int x = startX; x < endX; x += 32) {
-            int width = Math.min(endX - x, 32);
-            for (int y = startY; y < endY; y += 32) {
-                int height = Math.min(endY - y, 32);
-                ctx.blit(RenderPipelines.GUI_TEXTURED, identifier, x, y, 0.0F, 0.0F, width, height, width, height, 32, 32, ARGB.color(255, 64, 64, 64));
-            }
-        }
-    }
+    public abstract void extractRenderState(Minecraft client, Font textRenderer, Screen screen, Component title, Component message,
+                                            GuiGraphicsExtractor ctx, int mouseX, int mouseY, float delta);
 }

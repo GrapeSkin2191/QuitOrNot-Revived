@@ -2,7 +2,7 @@ package skin.grape.quitornot.client.screen.confirm.style;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
-import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.CommonComponents;
@@ -38,21 +38,16 @@ public final class ClassicStyle extends BaseStyle {
     }
 
     @Override
-    public void render(Minecraft client, Font textRenderer, Screen screen, Component title, Component message, GuiGraphics ctx, int mouseX, int mouseY, float delta) {
-        this.renderBackground(ctx, screen);
+    public void extractRenderState(Minecraft client, Font textRenderer, Screen screen, Component title, Component message, GuiGraphicsExtractor ctx, int mouseX, int mouseY, float delta) {
         drawTextAndMessage(textRenderer, screen, title, message, ctx);
     }
 
-    public void renderBackground(GuiGraphics ctx, Screen screen) {
-//        screen.renderTransparentBackground(ctx);
-    }
-
-    private void drawTextAndMessage(Font textRenderer, Screen screen, Component title, Component message, GuiGraphics ctx) {
-        ctx.drawCenteredString(textRenderer, title,
+    private void drawTextAndMessage(Font textRenderer, Screen screen, Component title, Component message, GuiGraphicsExtractor ctx) {
+        ctx.centeredText(textRenderer, title,
                 screen.width / 2,
                 titleTMargin,
                 -1);
-        ctx.drawCenteredString(textRenderer, message,
+        ctx.centeredText(textRenderer, message,
                 screen.width / 2,
                 screen.height / 2 - 60,
                 -1);

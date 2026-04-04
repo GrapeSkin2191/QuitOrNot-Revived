@@ -1,7 +1,7 @@
 package skin.grape.quitornot.client.toast;
 
 import net.minecraft.client.gui.Font;
-import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.components.toasts.Toast;
 import net.minecraft.client.gui.components.toasts.ToastManager;
 import net.minecraft.network.chat.Component;
@@ -34,9 +34,9 @@ public abstract class BaseToast implements Toast {
     }
 
     @Override
-    public void render(GuiGraphics guiGraphics, Font font, long startTime) {
-        drawToast(guiGraphics, font);
+    public void extractRenderState(GuiGraphicsExtractor guiGraphicsExtractor, Font font, long startTime) {
+        drawToast(guiGraphicsExtractor, font);
     }
 
-    protected abstract void drawToast(GuiGraphics context, Font font);
+    protected abstract void drawToast(GuiGraphicsExtractor context, Font font);
 }

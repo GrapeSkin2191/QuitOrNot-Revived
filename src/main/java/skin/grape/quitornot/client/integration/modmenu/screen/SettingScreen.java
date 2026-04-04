@@ -2,7 +2,7 @@ package skin.grape.quitornot.client.integration.modmenu.screen;
 
 import net.minecraft.util.ARGB;
 import skin.grape.quitornot.client.config.Config;
-import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.EditBox;
 import net.minecraft.client.gui.screens.Screen;
@@ -104,12 +104,12 @@ public final class SettingScreen extends Screen {
     }
 
     @Override
-    public void render(GuiGraphics ctx, int mouseX, int mouseY, float delta) {
-        super.render(ctx, mouseX, mouseY, delta);
-        ctx.drawCenteredString(this.font, this.title, this.width / 2, 15, ARGB.opaque(16777215));
+    public void extractRenderState(GuiGraphicsExtractor ctx, int mouseX, int mouseY, float delta) {
+        super.extractRenderState(ctx, mouseX, mouseY, delta);
+        ctx.centeredText(this.font, this.title, this.width / 2, 15, ARGB.opaque(16777215));
 
         MutableComponent literal = Component.literal("QuitOrNot");
-        ctx.drawString(font, literal, 2, this.height - font.lineHeight, ARGB.opaque(5592405));
+        ctx.text(font, literal, 2, this.height - font.lineHeight, ARGB.opaque(5592405));
     }
 
     @Override

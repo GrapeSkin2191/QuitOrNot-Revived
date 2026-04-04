@@ -1,9 +1,8 @@
 package skin.grape.quitornot.client.screen.confirm.style;
 
-//import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
-import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.renderer.RenderPipelines;
@@ -12,8 +11,6 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 import net.minecraft.util.ARGB;
 import skin.grape.quitornot.client.config.Config;
-
-import java.awt.*;
 
 public final class BedrockStyle extends BaseStyle {
     private static final Identifier WINDOW_TEXTURE = Identifier.fromNamespaceAndPath("quitornot", "textures/gui/bedrock/window.png");
@@ -51,31 +48,30 @@ public final class BedrockStyle extends BaseStyle {
     }
 
     @Override
-    public void render(Minecraft client, Font textRenderer, Screen screen, Component title, Component message, GuiGraphics ctx, int mouseX, int mouseY, float delta) {
-        drawBackground(client, screen, ctx);
+    public void extractRenderState(Minecraft client, Font textRenderer, Screen screen, Component title, Component message, GuiGraphicsExtractor ctx, int mouseX, int mouseY, float delta) {
         drawWindow(textRenderer, title, ctx, (screen.width - windowWidth) / 2, (screen.height - windowHeight) / 2);
         drawMessage(textRenderer, screen, message, ctx);
     }
 
-    private void drawBackground(Minecraft client, Screen screen, GuiGraphics ctx) {
-        // 让背景更透明，契合新版本风格
-//        screen.renderTransparentBackground(ctx);
-//        if (client.level == null) {
-//            ctx.fill(0, 0, screen.width, screen.height, ARGB.color(179, 16, 16, 16));
-//        }
-    }
-
-    private void drawWindow(Font textRenderer, Component title, GuiGraphics ctx, int x, int y) {
-        renderBackground(ctx, x, y + 16, x + windowWidth, y + windowHeight - 8, BACKGROUND);
-//        ctx.setColor(1.0F, 1.0F, 1.0F, 1.0F);
-//        RenderSystem.enableBlend();
+    private void drawWindow(Font textRenderer, Component title, GuiGraphicsExtractor ctx, int x, int y) {
+        drawBackground(ctx, x, y + 16, x + windowWidth, y + windowHeight - 8);
         ctx.blit(RenderPipelines.GUI_TEXTURED, WINDOW_TEXTURE, x, y, 0, 0, 252, 140, 256, 256);
-        ctx.drawString(textRenderer, title, x + 8, y + 6, ARGB.opaque(4210752), false);
+        ctx.text(textRenderer, title, x + 8, y + 6, ARGB.opaque(4210752), false);
     }
 
+    private void drawBackground(GuiGraphicsExtractor ctx, int startX, int startY, int endX, int endY) {
+        for (int x = startX; x < endX; x += 32) {
+            int width = Math.min(endX - x, 32);
+            for (int y = startY; y < endY; y += 32) {
+                int height = Math.min(endY - y, 32);
+                ctx.blit(RenderPipelines.GUI_TEXTURED, BACKGROUND, x, y, 0.0F, 0.0F, width, height, width, height,
+                        32, 32, ARGB.color(255, 64, 64, 64));
+            }
+        }
+    }
 
-    private void drawMessage(Font textRenderer, Screen screen, Component message, GuiGraphics ctx) {
-        ctx.drawCenteredString(textRenderer, message,
+    private void drawMessage(Font textRenderer, Screen screen, Component message, GuiGraphicsExtractor ctx) {
+        ctx.centeredText(textRenderer, message,
                 screen.width / 2,
                 (screen.height - windowHeight) / 2 + windowHeight - messageBMargin,
                 ARGB.opaque(10526880));

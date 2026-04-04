@@ -2,7 +2,7 @@ package skin.grape.quitornot.client.integration.modmenu.screen;
 
 import com.google.common.collect.ImmutableList;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.ContainerObjectSelectionList;
 import net.minecraft.client.gui.components.EditBox;
@@ -58,11 +58,11 @@ public final class SettingElementListWidget extends ContainerObjectSelectionList
         }
 
         @Override
-        public void renderContent(GuiGraphics ctx, int mouseX, int mouseY, boolean hovered, float tickDelta) {
+        public void extractContent(GuiGraphicsExtractor ctx, int mouseX, int mouseY, boolean hovered, float tickDelta) {
             assert minecraft.screen != null;
             int dx = minecraft.screen.width / 2 - this.textWidth / 2;
             int dy = this.getContentY() + this.getContentHeight();
-            ctx.drawString(minecraft.font, this.text, dx, dy - minecraft.font.lineHeight, textColor, true);
+            ctx.text(minecraft.font, this.text, dx, dy - minecraft.font.lineHeight, textColor, true);
         }
     }
 
@@ -81,12 +81,12 @@ public final class SettingElementListWidget extends ContainerObjectSelectionList
         }
 
         @Override
-        public void renderContent(GuiGraphics ctx, int mouseX, int mouseY, boolean hovered, float tickDelta) {
-            ctx.drawString(minecraft.font, describeText, this.getContentX(), (int) (this.getContentY() + minecraft.font.lineHeight / 2.0),
+        public void extractContent(GuiGraphicsExtractor ctx, int mouseX, int mouseY, boolean hovered, float tickDelta) {
+            ctx.text(minecraft.font, describeText, this.getContentX(), (int) (this.getContentY() + minecraft.font.lineHeight / 2.0),
                     ARGB.opaque(16777215), true);
             this.fieldWidget.setX(this.getContentWidth() - fieldWidget.getWidth() + this.getContentX());
             this.fieldWidget.setY(this.getContentY());
-            this.fieldWidget.render(ctx, mouseX, mouseY, tickDelta);
+            this.fieldWidget.extractRenderState(ctx, mouseX, mouseY, tickDelta);
         }
 
         @Override
@@ -111,11 +111,11 @@ public final class SettingElementListWidget extends ContainerObjectSelectionList
         }
 
         @Override
-        public void renderContent(GuiGraphics ctx, int mouseX, int mouseY, boolean hovered, float tickDelta) {
-            ctx.drawString(minecraft.font, describeText, this.getContentX(), this.getContentY() + 5, ARGB.opaque(16777215), true);
+        public void extractContent(GuiGraphicsExtractor ctx, int mouseX, int mouseY, boolean hovered, float tickDelta) {
+            ctx.text(minecraft.font, describeText, this.getContentX(), this.getContentY() + 5, ARGB.opaque(16777215), true);
             this.button.setX(this.getContentWidth() - button.getWidth() + this.getContentX());
             this.button.setY(this.getContentY());
-            this.button.render(ctx, mouseX, mouseY, tickDelta);
+            this.button.extractRenderState(ctx, mouseX, mouseY, tickDelta);
         }
 
         @Override

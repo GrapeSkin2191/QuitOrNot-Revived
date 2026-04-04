@@ -1,7 +1,7 @@
 package skin.grape.quitornot.client.toast;
 
 import net.minecraft.client.gui.Font;
-import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.network.chat.Component;
 
@@ -18,11 +18,10 @@ public final class QuitToast extends BaseToast {
     }
 
     @Override
-    protected void drawToast(GuiGraphics context, Font font) {
-//        context.setColor(1.0f, 1.0f, 1.0f, 1.0f);
+    protected void drawToast(GuiGraphicsExtractor context, Font font) {
         context.blit(RenderPipelines.GUI_TEXTURED, texture, 0, 0, 0, 0, width(), height(), 256, 256);
         context.blit(RenderPipelines.GUI_TEXTURED, texture, 8, 0, 241, 0, 15, 30, 256, 256);
-        context.drawString(font, title, 35, 7, Color.WHITE.getRGB());
-        context.drawString(font, message, 35, 18, Color.WHITE.getRGB());
+        context.text(font, title, 35, 7, Color.WHITE.getRGB());
+        context.text(font, message, 35, 18, Color.WHITE.getRGB());
     }
 }
